@@ -188,7 +188,7 @@ PMOSFET 1 = length is 180nm, width is 70um : PMOSFET 2 = width is 140um
 NMOSFET = length is 1um, width is 307.294um\
 V<sub>out</sub>=  1.1V\
 V<sub>x</sub>=  1.2V\
-I<sub>ref</sub> = 0.277mA
+I<sub>ref</sub> = 0.185mA
 ### Tabular column:
 |  Length  |                Width            |   V<sub>x</sub>  | V<sub>out</sub> | I<sub>ref</sub>  |
 |----------|---------------------------------|------------------|-----------------|------------------|
@@ -291,17 +291,17 @@ PMOSFET 1,2 = width is 70um \
 M3, M4  = width is 693.6um\
 M5 = width is 70um\
 M6 = width is 140um\
-V<sub>out</sub>=  1.32674V\
+V<sub>out</sub>=  1.41V\
 I<sub>ref</sub> = 0.277mA\
 
 
-3.Case 3: 1umm
+3.Case 3: 1um
 ![Screenshot 2025-03-24 173629](https://github.com/user-attachments/assets/ad635646-5df1-4e9f-a84f-2f2570fdf072)
 PMOSFET 1,2 = width is 70um \
 M3, M4  = width is 223.35um\
 M5 = width is 70um\
 M6 = width is 141um\
-V<sub>out</sub>=   1.22711V\
+V<sub>out</sub>=   1.4V\
 I<sub>ref</sub> = 0.277mA\
 
 <br>
@@ -309,10 +309,9 @@ I<sub>ref</sub> = 0.277mA\
 ### Tabular column:  
 |  Length  |                       Width                   |  V<sub>out</sub> | I<sub>ref</sub>  |
 |----------|-----------------------------------------------|------------------|------------------|
-|   180nm  | M1,M2=70um,M3, M4 =238.7um,M5 =70um, M6=140um |      1.39017V    |  0.277mA         |
-|   500nm  | M1,M2=70um,M3, M4 =693.6um,M5 =70um, M6=140um |      1.32674V    |  0.277mA         |
-|    1um   | M1,M2=70um,M3, M4 =223.35um,M5 =70um, M6=141um|      1.22711V    |  0.277mA         |
-
+|   180nm  | M1,M2=70um,M3, M4 =238.7um,M5 =70um, M6=140um |      1.4104V     |  0.277mA         |
+|   500nm  | M1,M2=70um,M3, M4 =693.6um,M5 =70um, M6=140um |      1.4100V     |  0.277mA         |
+|    1um   | M1,M2=70um,M3, M4 =223.35um,M5 =70um, M6=141um|      1.4041V     |  0.277mA         |
 <br>
 
 
