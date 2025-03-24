@@ -236,13 +236,124 @@ I<sub>ref</sub> = 0.277mA
 ![screenshot 2 3](https://github.com/user-attachments/assets/a7feb13e-7433-4876-b0c7-00c1d01f919d)
 * 3dB gain = 37dB
 * 3dB bandwidth= 18.6247MHz
+* ### 6. INFERENCE
+- The current mirror circuit effectively replicates the reference current with minimal deviation, ensuring consistent performance across various W/L ratios.
+- Even when the W/L ratio is scaled proportionally, the drain current (Id) remains stable, demonstrating the circuit's effectiveness.
+- A slightly increase in amplifier gain was observed, which is likely due to small variations in transistor characteristics or simulation-related factors.
+- As expected when the mirror ratio was adjusted from 1:1 to 1:2, the gain increased accordingly, confirming theoretical expectations.
+- Overall, the results align well with theoretical predictions, indicating that both the simulation and circuit design function correctly under different conditions.
 
 
 ### Circuit 3: 
 ### Aim : Design the diffrential amplifier having VDD=2V, P<=1mW, Vicm =1V as per the 3rd experiment and perform DC, Transient , AC analysis
 ### Circuit Diagram:
+![Screenshot (66)](https://github.com/user-attachments/assets/ce0079f3-7afb-42dd-bc3f-dc228529ef5b)
+### Procedure:
+
+1. Build the circuit as per the circuit diagram using LTspice.
+2. Set the Vdd as 2V, input common mode voltage as 1V.
+3. Download the library file [tsmc018 (1).txt](https://github.com/user-attachments/files/18785407/tsmc018.1.txt)
+4. Create a folder. Save the library file and LTspice file to the folder.
+5. Import the library file to LTspice using spice directive(.op).
+6. Find the current value for the given power rating.
+7.  Set the mosfet model name CMOSN for NMOSFET and CMOSP for PMOSFET as given in the library file, length as 180nm and vary the width  of NMOSFET i.e M3 and M4 till you get the exact Q point. Keep Current ratio of M1, M2 as 1:1, M5,M6 as 1:2, M3, M4 as 1:1.
+8. DC analysis: In edit simulation option, change to dc offset to get list of values obtained from the circuit. We should get the calculated current value in the simulation result.So that we need to vary the value of width since width is directly proportional to Drain current(Id) keeping other parameters constant. Since we are doing current mirroring the current of both mosfets should be same as the reference current.Keep the reference current as per the calculated design specifications.
+9. Transient analysis: In edit simulation option, change from dc offset to transient. Set the dc offset as 0.5V, Amplitude 1mV, frequency 1KHz. Keep stop time for 3ms and run to get the expected waveform.find the maximum output swing.
+10. AC analysis : In edit simulation option, change from transient to ac analysis. Set type of sweep as decade, number of points per decade as 20, start and stop frequency as 0.1Hz and 1THz to get the expected ac waveform. Note down the 3dB gain of the circuit and its bandwidth.
+
+<br>
+
+### Calculation:
+* P=1mW
+* I<sub>total</sub> = P/V = 1mW/2V  <table><td>=0.5mA</td><table>
+* I<sub>D1</sub> = I<sub>D2</sub> = I<sub>total</sub>/2 = I<sub>ref</sub> <table><td>=0.25mA</td><table> 
+* V<sub>DD</sub>= 2V
+* V<sub>inCM</sub>=1V
+
+<br>
+### Simulation Results:
+### DC analysis:
+1.Case 1: 180nm
+
+![Screenshot 2025-03-24 172617](https://github.com/user-attachments/assets/68884418-028a-4871-b6ca-f5304847fac8)
 
 
+PMOSFET 1,2 = width is 70um \
+M3, M4  = width is 238.7um\
+M5 = width is 70um\
+M6 = width is 140um\
+V<sub>out</sub>=  1.4V\
+I<sub>ref</sub> = 0.277mA\
+2.Case 2: 500nm
+![Screenshot 2025-03-24 173141](https://github.com/user-attachments/assets/75c56da8-659c-4509-9a53-1c7d8014d995)
+
+PMOSFET 1,2 = width is 70um \
+M3, M4  = width is 693.6um\
+M5 = width is 70um\
+M6 = width is 140um\
+V<sub>out</sub>=  1.32674V\
+I<sub>ref</sub> = 0.277mA\
 
 
+3.Case 3: 1umm
+![Screenshot 2025-03-24 173629](https://github.com/user-attachments/assets/ad635646-5df1-4e9f-a84f-2f2570fdf072)
+PMOSFET 1,2 = width is 70um \
+M3, M4  = width is 223.35um\
+M5 = width is 70um\
+M6 = width is 141um\
+V<sub>out</sub>=   1.22711V\
+I<sub>ref</sub> = 0.277mA\
+
+<br>
+
+### Tabular column:  
+|  Length  |                       Width                   |  V<sub>out</sub> | I<sub>ref</sub>  |
+|----------|-----------------------------------------------|------------------|------------------|
+|   180nm  | M1,M2=70um,M3, M4 =238.7um,M5 =70um, M6=140um |      1.39017V    |  0.277mA         |
+|   500nm  | M1,M2=70um,M3, M4 =693.6um,M5 =70um, M6=140um |      1.32674V    |  0.277mA         |
+|    1um   | M1,M2=70um,M3, M4 =223.35um,M5 =70um, M6=141um|      1.22711V    |  0.277mA         |
+
+<br>
+
+
+### Transient analysis:
+1.Case 1: 180nm
+![Screenshot (67)](https://github.com/user-attachments/assets/d376115c-2fb3-4fd4-85be-8472fc8a1dda)
+
+<br>
+
+2.Case 2: 500nm
+![Screenshot (68)](https://github.com/user-attachments/assets/ff85dc85-0417-47ed-a2bb-95e1705b7963)
+
+<br>
+
+3.Case 3: 1um
+![Screenshot (69)](https://github.com/user-attachments/assets/d1f11d9f-77d1-41ba-9f23-59c1920c182c)
+
+
+### AC analysis:
+1.Case 1: 180nm
+![3 1](https://github.com/user-attachments/assets/b9a12cfd-ddc0-440e-bf82-712833daf040)
+* 3dB gain = 32dB
+* 3dB bandwidth= 107.9033MHz
+
+<br>
+
+2.Case 2: 500nm
+![3 2](https://github.com/user-attachments/assets/2fc1299b-9f46-4cba-ac55-9fea3f097cf3)
+* 3dB gain = 41.131
+* 3dB bandwidth= 17.075083MHz
+
+<br>
+
+3.Case 3: 1um
+![3 3](https://github.com/user-attachments/assets/e51dec4f-9307-43b3-8c41-16c9f79b716d)
+* 3dB gain = 43.32dB
+* 3dB bandwidth= 24.278305MHz
+  ### 6. INFERENCE
+- The current mirror circuit effectively replicates the reference current with minimal deviation, ensuring consistent performance across various W/L ratios.
+- Even when the W/L ratio is scaled proportionally, the drain current (Id) remains stable, demonstrating the circuit's effectiveness.
+- A slightly increase in amplifier gain was observed, which is likely due to small variations in transistor characteristics or simulation-related factors.
+- As expected when the mirror ratio was adjusted from 1:1 to 1:2, the gain increased accordingly, confirming theoretical expectations.
+- Overall, the results align well with theoretical predictions, indicating that both the simulation and circuit design function correctly under different conditions.
 
